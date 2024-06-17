@@ -15,5 +15,8 @@ public interface ObjectivesService {
     Objectives createObjective(CreateObjectiveRequest request);
 
     Objectives updateObjective(String objectiveId, CreateObjectiveRequest request);
+
+    // Nuevo método
+    List<Objectives> getObjectivesByProject(String project);
 }
 

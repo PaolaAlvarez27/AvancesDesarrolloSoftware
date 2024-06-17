@@ -82,5 +82,16 @@ public class ObjsController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    // Nueva ruta para buscar por project
+    @GetMapping("/objectives/project/{project}")
+    public ResponseEntity<List<Objectives>> getObjectivesByProject(@PathVariable String project) {
+        List<Objectives> objectives = service.getObjectivesByProject(project);
+        if (!objectives.isEmpty()) {
+            return ResponseEntity.ok(objectives);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
 

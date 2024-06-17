@@ -77,4 +77,10 @@ public class ObjectivesServiceImpl implements ObjectivesService {
             return null;
         }
     }
+
+    // Implementación método búsqueda por proyecto
+    @Override
+    public List<Objectives> getObjectivesByProject(String project) {
+        return repository.findByProject(project);
+    }
 }
