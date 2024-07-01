@@ -48,7 +48,7 @@ const AddObjectiveForm = ({ onClose, onAdd }) => {
           />
         </div>
         <div>
-          <label>Categorías:</label>
+          <label>Proyectos:</label>
           <input 
             type="text" 
             value={project} 

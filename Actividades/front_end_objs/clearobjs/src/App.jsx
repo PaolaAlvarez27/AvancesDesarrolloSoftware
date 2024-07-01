@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import MenuBar from './components/MenuBar';
 import Objectives from './components/Objectives';
 import Projects from './components/Projects';
@@ -8,34 +9,23 @@ import MonthlyLoad from './components/MonthlyLoad';
 import CompletionPercentage from './components/CompletionPercentage';
 
 const App = () => {
-  const [menu, setMenu] = useState('objectives');
-
-  const renderContent = () => {
-    switch (menu) {
-      case 'objectives':
-        return <Objectives />;
-      case 'projects':
-        return <Projects />;
-      case 'deadlines':
-        return <Deadlines />;
-      case 'status':
-        return <Status />;
-      case 'monthly-load':
-        return <MonthlyLoad />;
-      case 'completion-percentage':
-        return <CompletionPercentage />;
-      default:
-        return <Objectives />;
-    }
-  };
-
   return (
-    <div>
-      <MenuBar setMenu={setMenu} />
-      <div className="content">
-        {renderContent()}
+    <Router>
+      <div>
+        <MenuBar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={<Objectives />} />
+            <Route path="/objectives" element={<Objectives />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/deadlines" element={<Deadlines />} />
+            <Route path="/status" element={<Status />} />
+            <Route path="/monthly-load" element={<MonthlyLoad />} />
+            <Route path="/completion-percentage" element={<CompletionPercentage />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 };
 
