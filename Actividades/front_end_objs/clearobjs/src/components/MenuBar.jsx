@@ -8,7 +8,7 @@ const MenuBar = ({ setMenu }) => {
       <button onClick={() => setMenu('deadlines')}>Fechas límite</button>
       <button onClick={() => setMenu('status')}>Estado</button>
       <button onClick={() => setMenu('monthly-load')}>Objetivos por período</button>
-      <button onClick={() => setMenu('completion-percentage')}>Porcentaje de cumplimiento</button>
+      <button onClick={() => setMenu('completion-percentage')}>Relación de cumplimiento</button>
     </div>
   );
 };
