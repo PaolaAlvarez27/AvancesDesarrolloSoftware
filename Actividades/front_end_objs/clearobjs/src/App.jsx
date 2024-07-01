@@ -4,6 +4,8 @@ import Objectives from './components/Objectives';
 import Projects from './components/Projects';
 import Deadlines from './components/Deadlines';
 import Status from './components/Status';
+import MonthlyLoad from './components/MonthlyLoad';
+import CompletionPercentage from './components/CompletionPercentage';
 
 const App = () => {
   const [menu, setMenu] = useState('objectives');
@@ -18,6 +20,10 @@ const App = () => {
         return <Deadlines />;
       case 'status':
         return <Status />;
+      case 'monthly-load':
+        return <MonthlyLoad />;
+      case 'completion-percentage':
+        return <CompletionPercentage />;
       default:
         return <Objectives />;
     }
