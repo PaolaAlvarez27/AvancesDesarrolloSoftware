@@ -1,0 +1,6 @@
+2024-06-14 13:43:32.365519-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "OBJECTIVES" not found (this database is empty); SQL statement:
+select o1_0.id,o1_0.deadline,o1_0.grupo,o1_0.nombre,o1_0.visible from objectives o1_0 [42104-224]
+2024-06-14 13:54:51.261480-05:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "OBJECTIVES" not found (this database is empty); SQL statement:
+select o1_0.id,o1_0.deadline,o1_0.grupo,o1_0.nombre,o1_0.visible from objectives o1_0 [42104-224]

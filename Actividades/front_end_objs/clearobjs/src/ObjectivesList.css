@@ -1,0 +1,34 @@
+.objectives-list {
+    margin-top: 20px;
+  }
+  
+  .objectives-list table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .objectives-list th,
+  .objectives-list td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .objectives-list th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .objectives-list tr.completed td {
+    text-decoration: line-through;
+    color: gray;
+  }
+  
+  .objectives-list tr.past-deadline td {
+    text-decoration: line-through;
+    color: darkred;
+  }
+  
+  .objectives-list input[type="checkbox"] {
+    margin-right: 10px;
+  }
+  
