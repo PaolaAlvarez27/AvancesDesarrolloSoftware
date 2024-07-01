@@ -1,6 +1,7 @@
 package com.objectives.objs.service;
 
 import java.util.List;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -43,7 +44,12 @@ public class ObjectivesServiceImpl implements ObjectivesService {
                 && StringUtils.hasLength(request.getProject().trim())
                 && request.getDeadline() != null && request.getVisible() != null) {
 
+            // Obtener el último ID y asignar el siguiente ID disponible
+            Optional<Objectives> lastObjective = repository.findTopByOrderByIdDesc();
+            Long nextId = lastObjective.map(objective -> objective.getId() + 1).orElse(1L);
+
             Objectives objective = Objectives.builder()
+                    .id(nextId)  // Asignar el siguiente ID disponible
                     .name(request.getName())
                     .project(request.getProject())
                     .deadline(request.getDeadline())

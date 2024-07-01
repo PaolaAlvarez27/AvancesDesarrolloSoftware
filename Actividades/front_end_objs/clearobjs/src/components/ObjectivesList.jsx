@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import 'C:/Users/user/Documents/UNIR/Esp_IngenieriaSoftware/Desarrolloaplicacionesweb_PER10351/Act1_BackEnd/objs/Actividad_1/front_end_objs/clearobjs/src/ObjectivesList.css'; // Asegúrate de tener este archivo para los estilos
+import '../ObjectivesList.css'; // Asegúrate de tener este archivo para los estilos
 
 const ObjectivesList = ({ onAddClick }) => {
   const [objectives, setObjectives] = useState([]);
@@ -16,12 +16,19 @@ const ObjectivesList = ({ onAddClick }) => {
   }, []);
 
   const toggleComplete = (id) => {
-    setObjectives(objectives.map(obj => {
+    const updatedObjectives = objectives.map(obj => {
       if (obj.id === id) {
         return { ...obj, completed: !obj.completed };
       }
       return obj;
-    }));
+    });
+    setObjectives(updatedObjectives);
+
+    const updatedObjective = updatedObjectives.find(obj => obj.id === id);
+    axios.put(`http://localhost:8761/objectives/${id}`, updatedObjective)
+      .catch(error => {
+        console.error('Error updating objective:', error);
+      });
   };
 
   const isPastDeadline = (deadline) => {
@@ -63,3 +70,4 @@ const ObjectivesList = ({ onAddClick }) => {
 };
 
 export default ObjectivesList;
+

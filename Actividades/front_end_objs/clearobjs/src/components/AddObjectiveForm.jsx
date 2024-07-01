@@ -26,7 +26,11 @@ const AddObjectiveForm = ({ onClose, onAdd }) => {
       })
       .catch(error => {
         console.error('Error adding objective:', error);
-        swal("Error", "Hubo un error al guardar el objetivo", "error");
+        if (error.response && error.response.data) {
+          swal("Error", `Hubo un error al guardar el objetivo: ${error.response.data}`, "error");
+        } else {
+          swal("Error", "Hubo un error al guardar el objetivo", "error");
+        }
       });
   };
 
@@ -55,7 +59,7 @@ const AddObjectiveForm = ({ onClose, onAdd }) => {
         <div>
           <label>Fecha límite:</label>
           <input 
-            type="date" 
+            type="datetime-local" 
             value={deadline} 
             onChange={(e) => setDeadline(e.target.value)} 
             required 
@@ -77,3 +81,6 @@ const AddObjectiveForm = ({ onClose, onAdd }) => {
 };
 
 export default AddObjectiveForm;
+
+
+
