@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
+import '../chartcontainers.css';
 
 const CompletionPercentage = () => {
-  const [chartData, setChartData] = useState({});
+  const [chartData, setChartData] = useState({ labels: [], datasets: [] });
 
   useEffect(() => {
     axios.get('http://localhost:8761/objectives')
@@ -44,7 +45,11 @@ const CompletionPercentage = () => {
   return (
     <div>
       <h2>Porcentaje de cumplimiento</h2>
-      <Pie data={chartData} />
+      <div className="chart-container">
+        <div style={{ width: '60%', height: '400px' }}>
+          <Pie data={chartData} options={{ maintainAspectRatio: false }} />
+        </div>
+      </div>
     </div>
   );
 };
